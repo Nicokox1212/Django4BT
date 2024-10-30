@@ -1,1 +1,10 @@
 <p>Liczba spotkań {{a}}</p>
+
+<ol>
+{% for meeting in meetings %}
+<li>
+    <a href="{% url 'detail' meeting.id %}"> {{ meeting.title }}</a>
+    
+</li>
+{% endfor %}
+</ol>

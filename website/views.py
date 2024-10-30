@@ -10,7 +10,7 @@ from .models import Meeting
 def welcome(request):
     meetings = Meeting.objects.all()
     num_meetings = Meeting.objects.count()
-    return render(request, "website/welcome.html",{"a": Meeting.objects.count(),})
+    return render(request, "website/welcome.html",{"meetings": Meeting.objects.all()})
 
 def date(request):
     return HttpResponse("This page was served at " + str(datetime.now()))
@@ -24,3 +24,7 @@ def otobie(request):
 def detail(request, id):
     meeting=Meeting.objects.get(pk=id)
     return render(request, "website/detail.html",{"meeting": meeting})
+
+def rooms_list(request):
+    room=Room.objects.all()
+    return render(request, "website/rooms_list.html",{"rooms": room})
